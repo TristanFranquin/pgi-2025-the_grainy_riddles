@@ -13,7 +13,22 @@
  * When the feature is totally implemented, your commit message must contain "close #n".
  */
 
+void dimension(const char *source_path) {
+    unsigned char *image_data= NULL ;
+    int width = 0 , height = 0, channels = 0;
+    int success = read_image_data(source_path, &image_data, &width, height, &channels);
+    if(success == 1)
+    {
+        printf("dimension: %d, %d\n", width, height);
+    }
+    else
+    {
+        fprintf(stderr, "[Erreur] impossible de lire l'image : %s\n", source_path);
+    }
+    
+}
 void helloWorld() {
+<<<<<<< HEAD
     printf("Hello World !!!");
 }
 
@@ -88,4 +103,7 @@ char* max_pixel(char* source_path){
     char* res=malloc(100);
     sprintf(res,"max_pixel(%d %d):%d,%d,%d\n",Xmax,Ymax,max_pixel->R,max_pixel->G,max_pixel->B);
     return res;  
+=======
+    printf("Hello World !");
+>>>>>>> 0601bb8 (Ajout de la fonction dimension() pour afficher les dimensions de l'image #3)
 }
