@@ -3,6 +3,8 @@
 
 #include "features.h"
 #include "utils.h"
+#include <stdlib.h>
+
 
 /**
  * @brief Here, you have to code features of the project.
@@ -12,5 +14,19 @@
  */
 
 void helloWorld() {
-    printf("Hello World !");
+    printf("Hello World !!!");
 }
+void dimension(char *source_path) {
+    unsigned char *data = NULL;
+    int width = 0, height = 0, channels = 0;
+
+    if (read_image_data(source_path, &data, &width, &height, &channels) != 0) {
+        fprintf(stderr, "Erreur lors de la lecture de l'image\n");
+        return;
+    }
+
+    printf("dimension: %d, %d\n", width, height);
+
+    free(data);
+}
+
