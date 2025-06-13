@@ -52,5 +52,36 @@ void first_pixel(char *source_path) {
 
     free(data);
 }
+void tenth_pixel(char *source_path) {
+    unsigned char *data = NULL;
+    int width = 0, height = 0, channels = 0;
+
+    if (read_image_data(source_path, &data, &width, &height, &channels) != 0) {
+        fprintf(stderr, "Erreur lors de la lecture de l'image\n");
+        return;
+    }
+
+    if (width < 10) {
+        fprintf(stderr, "Image trop petite : largeur < 10 pixels\n");
+        free(data);
+        return;
+    }
+
+    if (channels < 3) {
+        fprintf(stderr, "Image non RGB (moins de 3 canaux)\n");
+        free(data);
+        return;
+    }
+
+    int index = 9 * channels;  // 9ème pixel = index 9 * channels
+
+    int r = data[index];
+    int g = data[index + 1];
+    int b = data[index + 2];
+
+    printf("tenth_pixel: %d, %d, %d\n", r, g, b);
+
+    free(data);
+}
 
 
