@@ -61,3 +61,31 @@ void print_pixel(char* source_path,int X,int Y){
     pixelRGB * pixel = get_pixel(data,W,H,CH,X,Y);
     printf("print_pixel(%d %d):%d,%d,%d\n",X,Y,pixel->R,pixel->G,pixel->B);
 }
+
+char* max_pixel(char* source_path){
+    unsigned char* data=NULL;
+    int W,H,CH,X,Y;
+	int S=0;
+    int Xmax=0;
+    int Ymax=0;
+    read_image_data(source_path,&data,&W,&H,&CH);
+    pixelRGB*max_pixel=get_pixel(data,W,H,CH,0,0);
+	pixelRGB*first_pixel=get_pixel(data,W,H,CH,0,0);
+	int Smax=first_pixel->R+first_pixel->G+first_pixel->B;
+    for(Y=0;Y<H;Y++){
+        for(X=0;X<W;X++){
+            pixelRGB*pixel=get_pixel(data,W,H,CH,X,Y);
+            S=pixel->R+pixel->G+pixel->B;
+            if(S>Smax){
+			    Ymax=Y;
+				Xmax=X;
+				max_pixel=pixel;
+                Smax=S;                
+            }
+        }
+    }
+    printf("max_pixel(%d %d):%d,%d,%d\n",Xmax,Ymax,max_pixel->R,max_pixel->G,max_pixel->B);
+    char* res=malloc(100);
+    sprintf(res,"max_pixel(%d %d):%d,%d,%d\n",Xmax,Ymax,max_pixel->R,max_pixel->G,max_pixel->B);
+    return res;  
+}
