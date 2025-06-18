@@ -17,23 +17,25 @@ void helloWorld() {
     printf("Hello World !!!");
 }
 
-void dimension(char* source){
+void dimension(char* source_path) {
+
     unsigned char* data = NULL;
-    int W = 0 , H = 0 , ch = 0;
-    read_image_data( source_path, &data, &W, &H, &ch);
-    printf("dimension : %d, %d\n", W, H);
+    int W=0,H=0,CH=0;
+    read_image_data(source_path,&data,&W,&H,&CH);
+    printf("dimension :%d,%d\n",W,H);
 }
 
 void first_pixel(char* source_path){
+
     unsigned char* data = NULL;
-    int W, H, ch;
+    int W,H,CH;
    
-    read_image_data(source_path, &data, &§W, &H, &N);
+    read_image_data(source_path,&data,&W,&H,&CH);
    
-    unsigned char R = data[0];
-    unsigned char G = data[1];
-    unsigned char B = data[2];
+    unsigned char R=data[0];
+    unsigned char G=data[1];
+    unsigned char B=data[2];
  
-    printf("first_pixel: %d, %d, %d", R, G, B);
+    printf("first_pixel:%d,%d,%d",R,G,B);
 }
 
