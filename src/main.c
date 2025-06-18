@@ -31,10 +31,10 @@ int main(int argc, char **argv) {
     /* helloworld() function is defined in feature.h and implemented in feature.c */
     helloWorld();
   }
-  if (strncmp( configuration.command, "dimension", 10) == 0)
-  {
-    dimension(configuration.filenames[0]);
+  if ( strncmp( configuration.command, "mirror_horizontal", 17 ) == 0 ) {
+    mirror_horizontal(configuration.filenames[0]);
   }
+<<<<<<< HEAD
   /*
    * TO COMPLETE
    */
@@ -70,3 +70,7 @@ int main(int argc, char **argv) {
      return 0;
     
 }
+=======
+}
+
+>>>>>>> c660984 (git commit -m "Ajout de la fonction mirror_horizontal pour retourner l'image horizontalement")

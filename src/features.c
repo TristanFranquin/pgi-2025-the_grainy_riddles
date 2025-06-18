@@ -13,22 +13,8 @@
  * When the feature is totally implemented, your commit message must contain "close #n".
  */
 
-void dimension(const char *source_path) {
-    unsigned char *image_data= NULL ;
-    int width = 0 , height = 0, channels = 0;
-    int success = read_image_data(source_path, &image_data, &width, height, &channels);
-    if(success == 1)
-    {
-        printf("dimension: %d, %d\n", width, height);
-    }
-    else
-    {
-        fprintf(stderr, "[Erreur] impossible de lire l'image : %s\n", source_path);
-    }
-    
-}
+/// @brief 
 void helloWorld() {
-<<<<<<< HEAD
     printf("Hello World !!!");
 }
 
@@ -52,6 +38,23 @@ void first_pixel(char* source_path){
     unsigned char B=data[2];
  
     printf("first_pixel:%d,%d,%d",R,G,B);
+}void mirror_horizontal(char *source_path){
+    unsigned char* data=NULL;
+    int W,H,CH,X,Y;
+    read_image_data(source_path,&data,&W,&H,&CH);
+    unsigned char* mirror_hor_data=malloc(W*H*CH);
+    for(Y=0;Y<H;Y++){
+        for(X=0;X<W;X++){
+            pixelRGB*current_pixel=get_pixel(data,W,H,CH,X,Y);
+            int Xnew=W-1-X;
+            int Ynew=Y;
+            pixelRGB*mirror_hor_pixel = get_pixel(mirror_hor_data,W,H,CH,Xnew,Ynew);
+            mirror_hor_pixel->R=current_pixel->R;
+            mirror_hor_pixel->G=current_pixel->G;
+            mirror_hor_pixel->B=current_pixel->B;
+        }
+    }
+    write_image_data("image_out.bmp", mirror_hor_data,W,H);
 }
 
 void tenth_pixel (char *source_path) {
@@ -103,7 +106,5 @@ char* max_pixel(char* source_path){
     char* res=malloc(100);
     sprintf(res,"max_pixel(%d %d):%d,%d,%d\n",Xmax,Ymax,max_pixel->R,max_pixel->G,max_pixel->B);
     return res;  
-=======
-    printf("Hello World !");
->>>>>>> 0601bb8 (Ajout de la fonction dimension() pour afficher les dimensions de l'image #3)
+
 }
