@@ -108,3 +108,21 @@ char* max_pixel(char* source_path){
     return res;  
 
 }
+void rotate_acw(char *source_path){
+    unsigned char* data=NULL;
+    int W,H,CH,X,Y;
+    read_image_data(source_path,&data,&W,&H,&CH);
+    unsigned char* rotate_acw_data = calloc(W*H*CH,sizeof(unsigned char));
+    for(Y=0;Y<H;Y++){
+        for(X=0;X<W;X++){
+            pixelRGB*current_pixel=get_pixel(data,W,H,CH,X,Y);
+            int Xnew=Y;
+            int Ynew=W-1-X;
+            pixelRGB*rotate_acw_pixel=get_pixel(rotate_acw_data,H,W,CH,Xnew,Ynew);
+            rotate_acw_pixel->R=current_pixel->R;
+            rotate_acw_pixel->G=current_pixel->G;
+            rotate_acw_pixel->B=current_pixel->B;
+        }
+    }
+    write_image_data("image_out.bmp", rotate_acw_data,H,W);
+}

@@ -74,3 +74,8 @@ int main(int argc, char **argv) {
 }
 
 >>>>>>> c660984 (git commit -m "Ajout de la fonction mirror_horizontal pour retourner l'image horizontalement")
+  if ( strncmp( configuration.command, "rotate_cw", 9 ) == 0 ) {
+    rotate_cw(configuration.filenames[0]);
+  }
+}
+
