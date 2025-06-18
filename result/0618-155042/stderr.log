@@ -1,0 +1,30 @@
+/home/runner/work/pgi-2025-the_grainy_riddles/pgi-2025-the_grainy_riddles/src/features.c: In function ‘dimension’:
+/home/runner/work/pgi-2025-the_grainy_riddles/pgi-2025-the_grainy_riddles/src/features.c:23:22: error: ‘source_path’ undeclared (first use in this function)
+   23 |     read_image_data( source_path, &data, &W, &H, &ch);
+      |                      ^~~~~~~~~~~
+/home/runner/work/pgi-2025-the_grainy_riddles/pgi-2025-the_grainy_riddles/src/features.c:23:22: note: each undeclared identifier is reported only once for each function it appears in
+/home/runner/work/pgi-2025-the_grainy_riddles/pgi-2025-the_grainy_riddles/src/features.c: In function ‘first_pixel’:
+/home/runner/work/pgi-2025-the_grainy_riddles/pgi-2025-the_grainy_riddles/src/features.c:31:42: error: stray ‘\302’ in program
+   31 |     read_image_data(source_path, &data, &<U+00A7>W, &H, &N);
+      |                                          ^~~~~~~~
+/home/runner/work/pgi-2025-the_grainy_riddles/pgi-2025-the_grainy_riddles/src/features.c:31:51: error: ‘N’ undeclared (first use in this function)
+   31 |     read_image_data(source_path, &data, &§W, &H, &N);
+      |                                                   ^
+/home/runner/work/pgi-2025-the_grainy_riddles/pgi-2025-the_grainy_riddles/src/main.c: In function ‘main’:
+/home/runner/work/pgi-2025-the_grainy_riddles/pgi-2025-the_grainy_riddles/src/main.c:45:5: error: too few arguments to function ‘first_pixel’
+   45 |     first_pixel();
+      |     ^~~~~~~~~~~
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:93: CMakeFiles/freud.dir/src/features.c.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+In file included from /home/runner/work/pgi-2025-the_grainy_riddles/pgi-2025-the_grainy_riddles/src/main.c:8:
+/home/runner/work/pgi-2025-the_grainy_riddles/pgi-2025-the_grainy_riddles/src/features.h:9:6: note: declared here
+    9 | void first_pixel(char*source_path);
+      |      ^~~~~~~~~~~
+/home/runner/work/pgi-2025-the_grainy_riddles/pgi-2025-the_grainy_riddles/src/main.c:46:5: error: expected declaration or statement at end of input
+   46 |     }
+      |     ^
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:107: CMakeFiles/freud.dir/src/main.c.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:87: CMakeFiles/freud.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2
+
+The process '/usr/local/bin/cmake' failed with exit code 2
