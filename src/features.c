@@ -218,3 +218,46 @@ char* max_component(char *source_path,char color_pixel){
     sprintf(res,"max_component %c (%d %d): %d\n",color_pixel,Xmax,Ymax,color_pixel_max);
     return res;
 }
+
+char* min_component(char *source_path,char color_pixel){
+    unsigned char* data=NULL;
+    int W,H,CH,X,Y;
+    int Xmin=0;
+    int Ymin=0;
+    int color_pixel_val=0;
+    int color_pixel_min;
+    read_image_data(source_path,&data,&W,&H,&CH);
+    pixelRGB*first_pixel=get_pixel(data,W,H,CH,0,0);
+    if (color_pixel=='R'){
+        color_pixel_min=first_pixel->R;
+    }
+    else if (color_pixel=='G'){
+        color_pixel_min=first_pixel->G;
+    }
+    else if (color_pixel=='B'){
+        color_pixel_min=first_pixel->B;
+    }
+    for(Y=0;Y<H;Y++){
+        for(X=0;X<W;X++){
+            pixelRGB*pixel=get_pixel(data,W,H,CH,X,Y);
+            if (color_pixel=='R'){
+                color_pixel_val=pixel->R;
+            }
+            else if (color_pixel=='G'){
+                color_pixel_val=pixel->G;
+            }
+            else if (color_pixel=='B'){
+                color_pixel_val=pixel->B;
+            }
+            if(color_pixel_val<color_pixel_min){
+                color_pixel_min = color_pixel_val;
+                Xmin=X;
+                Ymin=Y;
+            }
+        }
+    }
+    printf("min_component %c (%d %d):%d\n",color_pixel,Xmin,Ymin,color_pixel_min);
+    char* res=malloc(100);
+    sprintf(res,"min_component %c (%d %d):%d\n",color_pixel,Xmin,Ymin,color_pixel_min);
+    return res;
+}
