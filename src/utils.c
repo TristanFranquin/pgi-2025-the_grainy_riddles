@@ -23,3 +23,14 @@ void color_red(char *source_path){
 }
 
 
+void color_green (char *source_path) {
+    unsigned char *data;
+    int W,H,CH;
+    read_image_data(source_path,&data,&W,&H,&CH);
+    for(int k=0;k<W*H;k++) {
+        data[3*k]=0;
+        data[2+3*k]=0;  
+    }
+    write_image_data("image_verte.bmp",data,W,H);
+    printf("color_green\n");
+}
