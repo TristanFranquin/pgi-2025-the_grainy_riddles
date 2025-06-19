@@ -144,3 +144,21 @@ void mirror_vertical(char *source_path){
     }
     write_image_data("image_out.bmp", mirror_vert_data,W,H);
 }
+void mirror_total(char *source_path){
+    unsigned char* data=NULL;
+    int W,H,CH,X,Y;
+    read_image_data(source_path,&data,&W,&H,&CH);
+    unsigned char* mirror_tot_data = calloc(W*H*CH,sizeof(unsigned char));
+    for(Y=0;Y<H;Y++){
+        for(X=0;X<W;X++){      
+            pixelRGB*current_pixel=get_pixel(data,W,H,CH,X,Y);
+            int Xnew=W-1-X;
+            int Ynew=H-1-Y;
+            pixelRGB*mirror_tot_pixel=get_pixel(mirror_tot_data,W,H,CH,Xnew,Ynew);
+            mirror_tot_pixel->R=current_pixel->R;
+            mirror_tot_pixel->G=current_pixel->G;
+            mirror_tot_pixel->B=current_pixel->B;
+        }
+    }
+    write_image_data("image_out.bmp", mirror_tot_data,W,H);
+}
