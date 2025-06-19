@@ -34,7 +34,6 @@ int main(int argc, char **argv) {
   if ( strncmp( configuration.command, "mirror_horizontal", 17 ) == 0 ) {
     mirror_horizontal(configuration.filenames[0]);
   }
-<<<<<<< HEAD
   /*
    * TO COMPLETE
    */
@@ -68,14 +67,13 @@ int main(int argc, char **argv) {
     max_pixel(configuration.filenames[0]);
     }
      return 0;
-    
-}
-=======
-}
-
->>>>>>> c660984 (git commit -m "Ajout de la fonction mirror_horizontal pour retourner l'image horizontalement")
-  if ( strncmp( configuration.command, "rotate_cw", 9 ) == 0 ) {
+    if ( strncmp( configuration.command, "rotate_cw", 9 ) == 0 ) {
     rotate_cw(configuration.filenames[0]);
+    }
+    if ( strncmp( configuration.command, "mirror_vertical", 15 ) == 0 ) {
+    mirror_vertical(configuration.filenames[0]);
   }
+}
+  
 }
 

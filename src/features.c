@@ -126,3 +126,21 @@ void rotate_acw(char *source_path){
     }
     write_image_data("image_out.bmp", rotate_acw_data,H,W);
 }
+void mirror_vertical(char *source_path){
+   unsigned char* data=NULL;
+    int W,H,CH,X,Y;
+    read_image_data(source_path,&data,&W,&H,&CH);
+    unsigned char* mirror_vert_data = calloc(W*H*CH,sizeof(unsigned char));
+    for(Y=0;Y<H;Y++){
+        for(X=0;X<W;X++){
+            pixelRGB*current_pixel=get_pixel(data,W,H,CH,X,Y);
+            int Xnew=X;
+            int Ynew=H-1-Y;
+            pixelRGB*mirror_vert_pixel=get_pixel(mirror_vert_data,W,H,CH,Xnew,Ynew);
+            mirror_vert_pixel->R=current_pixel->R;
+            mirror_vert_pixel->G=current_pixel->G;
+            mirror_vert_pixel->B=current_pixel->B;
+        }
+    }
+    write_image_data("image_out.bmp", mirror_vert_data,W,H);
+}
